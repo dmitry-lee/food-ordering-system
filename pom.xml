@@ -7,7 +7,7 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>2.5.5</version>
+        <version>2.6.7</version>
         <relativePath/>
     </parent>
 
@@ -15,6 +15,7 @@
         <module>order-service</module>
         <module>common</module>
         <module>infrastructure</module>
+        <module>customer-service</module>
     </modules>
 
     <groupId>com.food.ordering.system</groupId>

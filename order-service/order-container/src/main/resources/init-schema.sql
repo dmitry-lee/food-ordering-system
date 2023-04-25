@@ -16,11 +16,12 @@ CREATE TABLE "order".orders
    tracking_id UUID NOT NULL,
    price NUMERIC(10,2) NOT NULL,
    order_status order_status NOT NULL,
-   failure_messages character varying COLLATE pg_cagalog."default",
+   failure_messages character varying COLLATE pg_catalog."default",
    CONSTRAINT orders_pkey PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS "order".order_items
+DROP TABLE IF EXISTS "order".order_items CASCADE;
+
 CREATE TABLE "order".order_items
 (
    id BIGINT NOT NULL,
@@ -39,14 +40,15 @@ ALTER TABLE "order".order_items
     ON DELETE CASCADE
     NOT VALID;
 
-DROP TABLE IF EXISTS "order".order_address
+DROP TABLE IF EXISTS "order".order_address CASCADE;
+
 CREATE TABLE "order".order_address
 (
    id UUID NOT NULL,
    order_id UUID UNIQUE NOT NULL,
-   street character varying COLLATE pg_cagalog."default" NOT NULL,
-   postal_code character varying COLLATE pg_cagalog."default" NOT NULL,
-   city character varying COLLATE pg_cagalog."default" NOT NULL,
+   street character varying COLLATE pg_catalog."default" NOT NULL,
+   postal_code character varying COLLATE pg_catalog."default" NOT NULL,
+   city character varying COLLATE pg_catalog."default" NOT NULL,
    CONSTRAINT order_address_pkey PRIMARY KEY (id, order_id)
 );
 
