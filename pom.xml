@@ -16,6 +16,7 @@
         <module>common</module>
         <module>infrastructure</module>
         <module>customer-service</module>
+        <module>payment-service</module>
     </modules>
 
     <groupId>com.food.ordering.system</groupId>
