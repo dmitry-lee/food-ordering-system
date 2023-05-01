@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Getter
 @Builder
@@ -19,6 +20,7 @@ public class PaymentRequest {
     private CustomerId customerId;
     private BigDecimal price;
     private PaymentOrderStatus paymentOrderStatus;
+    private Instant createdAt;
 
     public void setPaymentOrderStatus(PaymentOrderStatus paymentOrderStatus) {
         this.paymentOrderStatus = paymentOrderStatus;
