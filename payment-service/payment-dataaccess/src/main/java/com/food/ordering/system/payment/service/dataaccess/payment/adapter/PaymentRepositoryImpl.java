@@ -1,6 +1,5 @@
 package com.food.ordering.system.payment.service.dataaccess.payment.adapter;
 
-import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.payment.service.dataaccess.payment.mapper.PaymentDataaccessMapper;
 import com.food.ordering.system.payment.service.dataaccess.payment.repository.PaymentJpaRepository;
 import com.food.ordering.system.payment.service.domain.entity.Payment;
@@ -31,7 +30,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public Optional<Payment> findByOrderId(UUID orderId) {
-        return paymentJpaRepository.findByOrderId(new OrderId(orderId))
+        return paymentJpaRepository.findByOrderId(orderId)
                 .map(paymentDataaccessMapper::paymentEntityToPayment);
     }
 }
