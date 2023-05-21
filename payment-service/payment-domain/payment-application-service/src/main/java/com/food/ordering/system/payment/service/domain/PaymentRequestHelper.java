@@ -58,8 +58,8 @@ public class PaymentRequestHelper {
     public PaymentEvent persistPayment(PaymentRequest paymentRequest) {
         log.info("Received payment complete event for order id: {}", paymentRequest.getOrderId());
         Payment payment = paymentDataMapper.paymentRequestModelToPayment(paymentRequest);
-        CreditEntry creditEntry = getCreditEntry(paymentRequest.getCustomerId());
-        List<CreditHistory> creditHistories = getCreditHistories(paymentRequest.getCustomerId());
+        CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
+        List<CreditHistory> creditHistories = getCreditHistories(payment.getCustomerId());
         List<String> failureMessages = new ArrayList<>();
         PaymentEvent paymentEvent =
                 paymentDomainService.validateAndInitiatePayment(payment, creditEntry, creditHistories, failureMessages,
@@ -79,8 +79,8 @@ public class PaymentRequestHelper {
                     paymentRequest.getOrderId() + " couldn't be found!");
         }
         Payment payment = paymentResponse.get();
-        CreditEntry creditEntry = getCreditEntry(paymentRequest.getCustomerId());
-        List<CreditHistory> creditHistories = getCreditHistories(paymentRequest.getCustomerId());
+        CreditEntry creditEntry = getCreditEntry(payment.getCustomerId());
+        List<CreditHistory> creditHistories = getCreditHistories(payment.getCustomerId());
         List<String> failureMessages = new ArrayList<>();
         PaymentEvent paymentEvent =
                 paymentDomainService.validateAndCancelPayment(payment, creditEntry, creditHistories, failureMessages,

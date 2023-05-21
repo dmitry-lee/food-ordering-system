@@ -30,9 +30,9 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
                                                    List<CreditHistory> creditHistories,
                                                    List<String> failureMessages,
                                                    DomainEventPublisher<PaymentCompletedEvent>
-                                                               paymentCompletedEventDomainEventPublisher,
+                                                           paymentCompletedEventDomainEventPublisher,
                                                    DomainEventPublisher<PaymentFailedEvent>
-                                                               paymentFailedEventDomainEventPublisher) {
+                                                           paymentFailedEventDomainEventPublisher) {
         payment.validatePayment(failureMessages);
         payment.initializePayment();
         validateCreditEntry(payment, creditEntry, failureMessages);
@@ -92,6 +92,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
                                      TransactionType transactionType) {
         creditHistories.add(CreditHistory.builder()
                 .id(new CreditHistoryId(UUID.randomUUID()))
+                .customerId(payment.getCustomerId())
                 .amount(payment.getPrice())
                 .transactionType(transactionType)
                 .build());

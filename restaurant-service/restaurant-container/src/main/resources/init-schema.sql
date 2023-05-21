@@ -25,7 +25,7 @@ CREATE TABLE restaurant.order_approval
     id uuid NOT NULL,
     restaurant_id uuid NOT NULL,
     order_id uuid NOT NULL,
-    status approval_status NOT NULL,
+    order_approval_status approval_status NOT NULL,
     CONSTRAINT order_approval_pkey PRIMARY KEY (id)
 );
 
