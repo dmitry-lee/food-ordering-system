@@ -9,6 +9,7 @@ import com.food.ordering.system.payment.service.domain.entity.CreditHistory;
 import com.food.ordering.system.payment.service.domain.entity.Payment;
 import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
 import com.food.ordering.system.payment.service.domain.exception.PaymentApplicationServiceException;
+import com.food.ordering.system.payment.service.domain.exception.PaymentNotFoundException;
 import com.food.ordering.system.payment.service.domain.mapper.PaymentDataMapper;
 import com.food.ordering.system.payment.service.domain.outbox.model.OrderOutboxMessage;
 import com.food.ordering.system.payment.service.domain.outbox.scheduler.OrderOutboxHelper;
@@ -89,7 +90,7 @@ public class PaymentRequestHelper {
                 paymentRepository.findByOrderId(UUID.fromString(paymentRequest.getOrderId()));
         if (paymentResponse.isEmpty()) {
             log.error("Payment with order id: {} couldn't be found", paymentRequest.getOrderId());
-            throw new PaymentApplicationServiceException("Payment with order id: " +
+            throw new PaymentNotFoundException("Payment with order id: " +
                     paymentRequest.getOrderId() + " couldn't be found!");
         }
         Payment payment = paymentResponse.get();
