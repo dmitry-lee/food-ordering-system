@@ -5,7 +5,7 @@ import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.restaurant.service.domain.dto.RestaurantApprovalRequest;
 import com.food.ordering.system.restaurant.service.domain.entity.Restaurant;
 import com.food.ordering.system.restaurant.service.domain.event.OrderApprovalEvent;
-import com.food.ordering.system.restaurant.service.domain.exception.RestaurantNotFoundException;
+import com.food.ordering.system.restaurant.service.domain.exceptions.RestaurantNotFoundException;
 import com.food.ordering.system.restaurant.service.domain.mapper.RestaurantDataMapper;
 import com.food.ordering.system.restaurant.service.domain.outbox.model.OrderOutboxMessage;
 import com.food.ordering.system.restaurant.service.domain.outbox.scheduler.OrderOutboxHelper;

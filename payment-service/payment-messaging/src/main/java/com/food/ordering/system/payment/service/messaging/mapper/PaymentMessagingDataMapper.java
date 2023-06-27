@@ -16,7 +16,7 @@ public class PaymentMessagingDataMapper {
     public PaymentRequest paymentRequestAvroModelToPaymentRequest(PaymentRequestAvroModel paymentRequestAvroModel) {
         return PaymentRequest.builder()
                 .id(paymentRequestAvroModel.getId())
-                .sagaId("")
+                .sagaId(paymentRequestAvroModel.getSagaId())
                 .orderId(paymentRequestAvroModel.getOrderId())
                 .customerId(new CustomerId(UUID.fromString(paymentRequestAvroModel.getCustomerId())))
                 .price(paymentRequestAvroModel.getPrice())
